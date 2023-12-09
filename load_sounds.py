@@ -2,7 +2,6 @@ import csv
 from pathlib import Path
 from openai import OpenAI
 client = OpenAI()
-#key = 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
 
 def vypis_simple(base,veta):
   speech_file_path = Path(__file__).parent / f'public/sounds/{base}_simple.mp3'
