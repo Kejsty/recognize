@@ -36,7 +36,7 @@
   </style>
 </head>
 <body>
-  <img src="/play.png" alt="Initial Image" style="width: 70%; height: 90%;" onclick="handleInitialImageClick()">
+  <img src="play.png" alt="Initial Image" style="width: 70%; height: 90%;" onclick="handleInitialImageClick()">
 
   <table id="mainTable" style="display: none;">
     <tr>
@@ -63,7 +63,7 @@
 
     function handleShapeClick(value, correct) {
       if(value === correct) {
-        const audio = new Audio(`/sounds/correct.mp3`);
+        const audio = new Audio(`sounds/correct.mp3`);
         audio.play();
 
         audio.addEventListener('ended', () => {
@@ -73,20 +73,20 @@
           const correct = allShapes[randomNumber];
 
           // Populate
-          document.getElementById('dynamicCell1').innerHTML = `<div onclick="handleShapeClick('${allShapes[0]}', '${correct}')"> <img src="/shapes/${allShapes[0]}_${getRandom(7)}.png" alt="Shape 1"> </div>`;
-          document.getElementById('dynamicCell2').innerHTML = `<div onclick="handleShapeClick('${allShapes[1]}', '${correct}')"> <img src="/shapes/${allShapes[1]}_${getRandom(7)}.png" alt="Shape 2"></div>`;
-          document.getElementById('dynamicCell3').innerHTML = `<div onclick="handleShapeClick('${allShapes[2]}', '${correct}')"> <img src="/shapes/${allShapes[2]}_${getRandom(7)}.png" alt="Shape 3"></div>`;
-          document.getElementById('dynamicCell4').innerHTML = `<div onclick="handleShapeClick('${allShapes[3]}', '${correct}')"> <img src="/shapes/${allShapes[3]}_${getRandom(7)}.png" alt="Shape 4"> </div>`;
+          document.getElementById('dynamicCell1').innerHTML = `<div onclick="handleShapeClick('${allShapes[0]}', '${correct}')"> <img src="shapes/${allShapes[0]}_${getRandom(7)}.png" alt="Shape 1"> </div>`;
+          document.getElementById('dynamicCell2').innerHTML = `<div onclick="handleShapeClick('${allShapes[1]}', '${correct}')"> <img src="shapes/${allShapes[1]}_${getRandom(7)}.png" alt="Shape 2"></div>`;
+          document.getElementById('dynamicCell3').innerHTML = `<div onclick="handleShapeClick('${allShapes[2]}', '${correct}')"> <img src="shapes/${allShapes[2]}_${getRandom(7)}.png" alt="Shape 3"></div>`;
+          document.getElementById('dynamicCell4').innerHTML = `<div onclick="handleShapeClick('${allShapes[3]}', '${correct}')"> <img src="shapes/${allShapes[3]}_${getRandom(7)}.png" alt="Shape 4"> </div>`;
 
-          const initialImageSound = new Audio(`/sounds/${correct}_find.mp3`); 
+          const initialImageSound = new Audio(`sounds/${correct}_find.mp3`); 
           initialImageSound.play();
         });
       } else {
-        const audio = new Audio(`/sounds/${value}_wrong.mp3`); 
+        const audio = new Audio(`sounds/${value}_wrong.mp3`); 
         audio.play();
 
         audio.addEventListener('ended', () => {
-          const initialImageSound = new Audio(`/sounds/${correct}_find.mp3`); 
+          const initialImageSound = new Audio(`sounds/${correct}_find.mp3`); 
           initialImageSound.play();
         });
       }
@@ -95,7 +95,7 @@
 
     function handleInitialImageClick() {
       // Play a sound
-      const initialImageSound = new Audio(`/sounds/${correct}_find.mp3`); 
+      const initialImageSound = new Audio(`sounds/${correct}_find.mp3`); 
       initialImageSound.play();
 
       // Hide the initial image
@@ -108,10 +108,10 @@
     }
 
     // Populate dynamic cells with values
-    document.getElementById('dynamicCell1').innerHTML = `<div onclick="handleShapeClick('${allShapes[0]}', '${correct}')"> <img src="/shapes/${allShapes[0]}_${getRandom(7)}.png" alt="Shape 1"> </div>`;
-    document.getElementById('dynamicCell2').innerHTML = `<div onclick="handleShapeClick('${allShapes[1]}', '${correct}')"> <img src="/shapes/${allShapes[1]}_${getRandom(7)}.png" alt="Shape 2"></div>`;
-    document.getElementById('dynamicCell3').innerHTML = `<div onclick="handleShapeClick('${allShapes[2]}', '${correct}')"> <img src="/shapes/${allShapes[2]}_${getRandom(7)}.png" alt="Shape 3"></div>`;
-    document.getElementById('dynamicCell4').innerHTML = `<div onclick="handleShapeClick('${allShapes[3]}', '${correct}')"> <img src="/shapes/${allShapes[3]}_${getRandom(7)}.png" alt="Shape 4"> </div>`;
+    document.getElementById('dynamicCell1').innerHTML = `<div onclick="handleShapeClick('${allShapes[0]}', '${correct}')"> <img src="shapes/${allShapes[0]}_${getRandom(7)}.png" alt="Shape 1"> </div>`;
+    document.getElementById('dynamicCell2').innerHTML = `<div onclick="handleShapeClick('${allShapes[1]}', '${correct}')"> <img src="shapes/${allShapes[1]}_${getRandom(7)}.png" alt="Shape 2"></div>`;
+    document.getElementById('dynamicCell3').innerHTML = `<div onclick="handleShapeClick('${allShapes[2]}', '${correct}')"> <img src="shapes/${allShapes[2]}_${getRandom(7)}.png" alt="Shape 3"></div>`;
+    document.getElementById('dynamicCell4').innerHTML = `<div onclick="handleShapeClick('${allShapes[3]}', '${correct}')"> <img src="shapes/${allShapes[3]}_${getRandom(7)}.png" alt="Shape 4"> </div>`;
 
   </script>
 </body>
