@@ -4,7 +4,7 @@ from openai import OpenAI
 client = OpenAI()
 
 def vypis_simple(base,veta):
-  speech_file_path = Path(__file__).parent / f'public/sounds/{base}_simple.mp3'
+  speech_file_path = Path(__file__).parent / f'sounds/{base}_simple.mp3'
   response = client.audio.speech.create(
     model="tts-1",
     voice="nova",
@@ -16,7 +16,7 @@ def vypis_simple(base,veta):
 
 
 def vypis_find(base,veta):
-  speech_file_path = Path(__file__).parent / f'public/sounds/{base}_find.mp3'
+  speech_file_path = Path(__file__).parent / f'sounds/{base}_find.mp3'
   response = client.audio.speech.create(
     model="tts-1",
     voice="nova",
@@ -27,7 +27,7 @@ def vypis_find(base,veta):
   print(f'Streamed {veta} into {speech_file_path}')
 
 def vypis_wrong(base,veta):
-  speech_file_path = Path(__file__).parent / f'public/sounds/{base}_wrong.mp3'
+  speech_file_path = Path(__file__).parent / f'sounds/{base}_wrong.mp3'
   response = client.audio.speech.create(
     model="tts-1",
     voice="nova",

@@ -61,7 +61,8 @@
 <body>
 
   <div class="initialImages">
-    <img src="shapes.jpg" alt="Shapes" onclick="handleInitialImageClick()">
+    <img src="shapes.png" alt="Shapes" onclick="handleInitialImageClick('shapes')">
+    <img src="numbers.png" alt="Numbers" onclick="handleInitialImageClick('numbers')">
     <!-- to be done <img src="numbers.jpg" alt="Numbers" onclick="handleInitialImageClick()"> -->
   </div>
 
@@ -80,6 +81,7 @@
 
     let isAudioPlaying = false; // Flag to track audio playback state
     let allShapes = [];
+    let option;
 
     function getRandom(max) {
       return  Math.floor(Math.random() * max) + 1;
@@ -102,10 +104,10 @@
           const correct = allShapes[randomNumber];
 
           // Populate
-          document.getElementById('option1').innerHTML = `<div onclick="handleShapeClick('${allShapes[0]}', '${correct}')"> <img src="shapes/${allShapes[0]}_${getRandom(7)}.png" alt="Shape 1"> </div>`;
-          document.getElementById('option2').innerHTML = `<div onclick="handleShapeClick('${allShapes[1]}', '${correct}')"> <img src="shapes/${allShapes[1]}_${getRandom(7)}.png" alt="Shape 2"></div>`;
-          document.getElementById('option3').innerHTML = `<div onclick="handleShapeClick('${allShapes[2]}', '${correct}')"> <img src="shapes/${allShapes[2]}_${getRandom(7)}.png" alt="Shape 3"></div>`;
-          document.getElementById('option4').innerHTML = `<div onclick="handleShapeClick('${allShapes[3]}', '${correct}')"> <img src="shapes/${allShapes[3]}_${getRandom(7)}.png" alt="Shape 4"> </div>`;
+          document.getElementById('option1').innerHTML = `<div onclick="handleShapeClick('${allShapes[0]}', '${correct}')"> <img src="${option}/${allShapes[0]}_${getRandom(7)}.png" alt="${option} 1"> </div>`;
+          document.getElementById('option2').innerHTML = `<div onclick="handleShapeClick('${allShapes[1]}', '${correct}')"> <img src="${option}/${allShapes[1]}_${getRandom(7)}.png" alt="${option} 2"></div>`;
+          document.getElementById('option3').innerHTML = `<div onclick="handleShapeClick('${allShapes[2]}', '${correct}')"> <img src="${option}/${allShapes[2]}_${getRandom(7)}.png" alt="${option} 3"></div>`;
+          document.getElementById('option4').innerHTML = `<div onclick="handleShapeClick('${allShapes[3]}', '${correct}')"> <img src="${option}/${allShapes[3]}_${getRandom(7)}.png" alt="${option} 4"> </div>`;
 
           const initialImageSound = new Audio(`sounds/${correct}_find.mp3`); 
           initialImageSound.play();
@@ -123,18 +125,26 @@
       }
     }
 
-    function handleInitialImageClick() {
-      // These are all the shape values we have covered with images & sounds
-      allShapes = ['circle', 'rectangle', 'square', 'star', 'triangle' ];
+    function handleInitialImageClick(chosenOption) {
+      option = chosenOption;
+
+      if(option === 'shapes') {
+        allShapes = ['circle', 'rectangle', 'square', 'star', 'triangle', 'arrow' ];
+      } else if (option === 'numbers') {
+        allShapes = ['zero', 'one', 'two', 'three', 'four', 'five', 'six' ];
+      } else {
+        console.log("WRONG CHOICE: ", option);
+      }
+
       const randomNumber = getRandom(4) - 1;
       allShapes.sort(() => Math.random() - 0.5);
       const correct = allShapes[randomNumber];
 
       // Populate dynamic cells with values
-      document.getElementById('option1').innerHTML = `<div onclick="handleShapeClick('${allShapes[0]}', '${correct}')"> <img src="shapes/${allShapes[0]}_${getRandom(7)}.png" alt="Shape 1"> </div>`;
-      document.getElementById('option2').innerHTML = `<div onclick="handleShapeClick('${allShapes[1]}', '${correct}')"> <img src="shapes/${allShapes[1]}_${getRandom(7)}.png" alt="Shape 2"></div>`;
-      document.getElementById('option3').innerHTML = `<div onclick="handleShapeClick('${allShapes[2]}', '${correct}')"> <img src="shapes/${allShapes[2]}_${getRandom(7)}.png" alt="Shape 3"></div>`;
-      document.getElementById('option4').innerHTML = `<div onclick="handleShapeClick('${allShapes[3]}', '${correct}')"> <img src="shapes/${allShapes[3]}_${getRandom(7)}.png" alt="Shape 4"> </div>`;
+      document.getElementById('option1').innerHTML = `<div onclick="handleShapeClick('${allShapes[0]}', '${correct}')"> <img src="${option}/${allShapes[0]}_${getRandom(7)}.png" alt="${option} 1"> </div>`;
+      document.getElementById('option2').innerHTML = `<div onclick="handleShapeClick('${allShapes[1]}', '${correct}')"> <img src="${option}/${allShapes[1]}_${getRandom(7)}.png" alt="${option} 2"></div>`;
+      document.getElementById('option3').innerHTML = `<div onclick="handleShapeClick('${allShapes[2]}', '${correct}')"> <img src="${option}/${allShapes[2]}_${getRandom(7)}.png" alt="${option} 3"></div>`;
+      document.getElementById('option4').innerHTML = `<div onclick="handleShapeClick('${allShapes[3]}', '${correct}')"> <img src="${option}/${allShapes[3]}_${getRandom(7)}.png" alt="${option} 4"> </div>`;
 
       isAudioPlaying = true;
       const initialImageSound = new Audio(`sounds/${correct}_find.mp3`); 
